@@ -3,6 +3,7 @@ class TopicsController < ApplicationController
   # GET /topics.json
   def index
     @topics = Topic.all
+    @topics = @topics.sort_by { |topic| topic.votes.count }.reverse
 
     respond_to do |format|
       format.html # index.html.erb
